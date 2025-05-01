@@ -1,86 +1,93 @@
 "use client"
-import { Facebook, Instagram, Menu, Twitter, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
-const socials = [
-  {
-    logo: <Facebook />,
-    link: "https://www.facebook.com/"
-  },
-  {
-    logo: <Instagram />,
-    link: "https://www.instagram.com/"
-  },
-  {
-    logo: <Twitter />,
-    link: "https://x.com/"
-  }
-]
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-const links = [
-  {
-    name: "Home",
-    href: "/"
-  },
-  {
-    name: "Events",
-    href: "/events"
-  },
-  {
-    name: "About",
-    href: "/about"
-  },
-  {
-    name: "Contact",
-    href: "/contact"
-  }
-]
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
 
-const Header = () => {
-  const [openMenu, setOpenMenu] = useState(false)
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
-    <header className="py-5 px-10 flex items-center justify-between w-full">
-      <div className="flex items-center -z-20">
-        {
-          socials.map((social) => {
-            return (
-              <Link key={social.link} href={social.link} className="mx-2 size-10 text-gray-400 hover:text-gray-600">{social.logo}</Link>
-            )
-          })
-        }
-      </div>
-      <div className="-z-20">
-        <Link href="/">
-          <Image src={"/marocmattbach_logo.png"} alt="marocmattbach_logo" width={300} height={300} className="size-40" priority={true} />
-        </Link>
-      </div>
-      <div>
-        <button onClick={() => setOpenMenu(!openMenu)} className="z-60 p-5 bg-gray-50 w-fit h-fit">
-        <Menu size={48} className="text-gray-400 hover:text-gray-600" />
-        </button>
-      </div>
-      <div className={`absolute top-0 left-0 z-50 h-screen w-full bg-[#0D0D0D] transition-all duration-500 ${openMenu ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}>
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white shadow-md py-2'
+          : 'bg-transparent py-4'
+      }`}
+    >
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between">
+          <a href="#" className="text-2xl font-serif font-bold text-orange-600">
+            <span className={isScrolled ? 'text-gray-600' : 'text-white'}>
+              Maroc<span className="text-orange-600">Mattbach</span>
+            </span>
+          </a>
 
-      <div className="absolute top-15 right-10">
-        <button onClick={() => setOpenMenu(!openMenu)} className="z-60 p-5 bg-gray-50 w-fit h-fit">
-        <X size={48} className="text-gray-400 hover:text-gray-600" />
-        </button>
-      </div>
-        <Image src={"/marocmattbach_logo.png"} alt="marocmattbach_logo" width={300} height={300} className="size-[30rem] absolute -top-28 -left-22 -rotate-12 opacity-10" priority={true} />
-        <ul className="z-60 flex flex-col items-center justify-center h-screen">
-          {links.map((link, index) => (
-            <li key={index} className="group py-5 text-4xl text-white relative">
-              <Link href={link.href} className="">{link.name}</Link>
-              <div className="bg-teal-500 h-[2px] w-0 group-hover:w-full transition-all duration-500 absolute left-0 bottom-0"></div>
-            </li>
-          ))}
-        </ul>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex">
+            <ul className="flex space-x-8">
+              {['About', 'Services', 'Menu', 'Testimonials', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className={`font-medium hover:text-orange-600 transition-colors duration-300 ${
+                      isScrolled ? 'text-gray-800' : 'text-white'
+                    }`}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden focus:outline-none"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} />
+            ) : (
+              <Menu size={24} className={isScrolled ? 'text-gray-800' : 'text-white'} />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden pt-4 pb-4">
+            <ul className="flex flex-col space-y-4">
+              {['About', 'Services', 'Menu', 'Testimonials', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="block text-gray-800 font-medium hover:text-orange-600 transition-colors duration-300"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </header>
-  )
+  );
 };
 
-export default Header
+export default Header;
