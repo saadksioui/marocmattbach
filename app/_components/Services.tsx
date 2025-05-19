@@ -10,14 +10,14 @@ interface ServiceProps {
 const ServiceCard: React.FC<ServiceProps> = ({ title, description, icon }) => {
   return (
     <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 group">
-      <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center mb-6 text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
+      <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center mb-6 text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
         {icon}
       </div>
       <h3 className="font-serif text-xl font-bold mb-4 text-gray-800">{title}</h3>
       <p className="text-gray-600">{description}</p>
       <a
         href="#contact"
-        className="inline-block mt-6 text-gold hover:text-gold-dark transition-colors duration-300 font-medium"
+        className="inline-block mt-6 text-orange-500 hover:text-orange-500-dark transition-colors duration-300 font-medium"
       >
         Learn More →
       </a>
@@ -48,7 +48,7 @@ const Services: React.FC = () => {
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-gold text-sm uppercase tracking-widest font-medium">Our Expertise</span>
+          <span className="text-orange-500 bg-orange-400/10 py-1 px-5 rounded-4xl text-sm uppercase tracking-widest font-medium">Our Expertise</span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold mt-2 mb-6 text-gray-800">
             Tailored Catering Services
           </h2>
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
         <div className="mt-16 text-center">
           <a
             href="#contact"
-            className="inline-block bg-gold hover:bg-opacity-90 text-white px-8 py-3 rounded transition duration-300 font-medium"
+            className="inline-block bg-orange-500 hover:bg-opacity-90 text-white px-8 py-3 rounded transition duration-300 font-medium"
           >
             Discuss Your Event
           </a>

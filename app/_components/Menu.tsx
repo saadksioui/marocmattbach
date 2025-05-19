@@ -9,7 +9,7 @@ const Menu: React.FC = () => {
     <section id="menu" className="py-20 bg-beige">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-orange-600 text-sm uppercase tracking-widest font-medium">Our Offerings</span>
+          <span className="text-orange-600 bg-orange-400/10 py-1 px-5 rounded-4xl text-sm uppercase tracking-widest font-medium">Our Offerings</span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold mt-2 mb-6 text-gray-800">
             Sample Menu Selections
           </h2>

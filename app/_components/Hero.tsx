@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
     >
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-3xl mx-auto">
-          <span className="inline-block text-orange-600 text-sm md:text-base uppercase tracking-widest mb-4 font-light">
+          <span className="inline-block text-orange-600 bg-orange-400/10 py-1 px-5 rounded-4xl text-sm md:text-base uppercase tracking-widest mb-4 font-light">
             Exceptional Catering Services
           </span>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">

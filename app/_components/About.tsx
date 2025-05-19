@@ -15,16 +15,16 @@ const About: React.FC = () => {
             </div>
             <div className="absolute -bottom-6 -right-6 hidden md:block">
               <div className="bg-orange-600 text-white p-6 rounded-lg shadow-lg">
-                <p className="font-serif text-2xl font-bold">15+</p>
+                <p className="font-serif text-2xl font-bold">8+</p>
                 <p className="text-sm uppercase tracking-wider">Years of Excellence</p>
               </div>
             </div>
           </div>
 
           <div>
-            <span className="text-orange-600 text-sm uppercase tracking-widest font-medium">Our Story</span>
+            <span className="text-orange-600 bg-orange-400/10 py-1 px-5 rounded-4xl text-sm uppercase tracking-widest font-medium">Our Story</span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold mt-2 mb-6 text-gray-800">
-              Crafting Culinary Experiences Since 2008
+              Crafting Culinary Experiences Since 2018
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Founded by award-winning chef Alessandra Rivera, GourmetElite began with a simple mission: to create extraordinary dining experiences that elevate any occasion. What started as a small boutique catering service has evolved into one of the city's most prestigious culinary teams.

@@ -31,7 +31,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <a href="#" className="text-2xl font-serif font-bold text-orange-600">
             <span className={isScrolled ? 'text-gray-600' : 'text-white'}>
-              Maroc<span className="text-orange-600">Mattbach</span>
+              Maroc<span className="text-orange-600 drop-shadow-md">Mattbach</span>
             </span>
           </a>
 
